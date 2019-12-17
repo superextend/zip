@@ -1,5 +1,5 @@
 <?php
-namespace  superextned/zip;
+namespace  superextned\zip;
 
 use ZipArchive;
 
