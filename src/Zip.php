@@ -1,13 +1,15 @@
 <?php
-namespace  zip;
+namespace  superextned/zip;
+
 use ZipArchive;
+
 class Zip{
 	/**
 	 * 总接口
-	 * @param $dir_path 需要压缩的目录地址（绝对路径）32
+	 * @param $dir_path 需要压缩的目录地址（绝对路径）
 	 * @param $zipName 需要生成的zip文件名（绝对路径）
 	 */	
-public function makezip($dir_path,$zipName){
+   public function makezip($dir_path,$zipName){
     $relationArr = [$dir_path=>[
         'originName'=>$dir_path,
         'is_dir' => true,
@@ -78,7 +80,7 @@ public function modifiyFileName($path,&$relationArr){
             if(is_dir($path.'\\'.$file)){
                 $newName = md5(rand(0,99999).rand(0,99999).rand(0,99999).microtime().'dir'.$count);
                 $relationArr[$newName] = [
-                    'originName' => iconv('GBK','UTF-8',$file),
+                    'originName' => $file,
                     'is_dir' => true,
                     'children' => []
                 ];
@@ -90,7 +92,7 @@ public function modifiyFileName($path,&$relationArr){
                 $extension = strchr($file,'.');
                 $newName = md5(rand(0,99999).rand(0,99999).rand(0,99999).microtime().'file'.$count);
                 $relationArr[$newName.$extension] = [
-                    'originName' => iconv('GBK','UTF-8',$file),
+                    'originName' => $file,
                     'is_dir' => false,
                     'children' => []
                 ];
@@ -110,9 +112,9 @@ public function restoreFileName($path,$relationArr){
     foreach($relationArr as $k=>$v){
         if(!empty($v['children'])){
             $this->restoreFileName($path.'\\'.$k,$v['children']);
-            rename($path.'\\'.$k,iconv('UTF-8','GBK',$path.'\\'.$v['originName']));
+            rename($path.'\\'.$k,$path.'\\'.$v['originName']);
         }else{
-            rename($path.'\\'.$k,iconv('UTF-8','GBK',$path.'\\'.$v['originName']));
+            rename($path.'\\'.$k,$path.'\\'.$v['originName']);
         }
     }
 }
