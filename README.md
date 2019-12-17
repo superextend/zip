@@ -3,9 +3,9 @@
 zip压缩
 ## 安装
 ~~~
-composer require 842426182/zip
+composer require superextend/zip
 ~~~
-use zip\Zip;
+use superextend\zip\Zip;
 
 $logopath = ''; //要压缩的文件目录
 $filepath = '';//要存放的目录
