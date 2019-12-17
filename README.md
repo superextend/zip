@@ -5,10 +5,10 @@ zip压缩
 ~~~
 composer require superextend/zip
 ~~~
-use superextend\zip\Zip;
+use superextend\zip\Zipfile;
 
 $logopath = ''; //要压缩的文件目录
 $filepath = '';//要存放的目录
-$zips = new Zip();  
+$zips = new Zipfile();  
 $result = $zips->makezip($logopath,$filepath);
 
