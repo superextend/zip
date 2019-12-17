@@ -1,9 +1,9 @@
 <?php
-namespace  superextend;
+namespace  superextend\zip;
 
 use ZipArchive;
 
-class Zip{
+class Zipfile{
 	/**
 	 * 总接口
 	 * @param $dir_path 需要压缩的目录地址（绝对路径）
