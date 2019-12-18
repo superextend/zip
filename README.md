@@ -4,7 +4,9 @@ zip压缩
 ## 安装
 ~~~
 composer require superextend/zip
-
+~~~
+## 使用
+~~~
 use superextend\zip\Zipfile;
 
 $logopath = ''; //要压缩的文件目录
